@@ -1,0 +1,5 @@
+server:
+  servlet:
+    context-path: /${APP_NAME}
+app:
+  name: ${APP_NAME}

@@ -1,0 +1,21 @@
+name: api2
+type: Load Balanced Web Service
+
+http:
+  path: 'api2'
+  healthcheck: '/api2/health'
+
+image:
+  build: Dockerfile
+  port: 8080
+
+cpu: 256       # ECSタスクに割り当てるCPUユニット
+memory: 512    # ECSタスクに割り当てるメモリ
+count: 1       # サービスの必要タスク数
+
+network:
+  vpc:
+    placement: private # タスクをプライベートサブネットに配置する(デフォルトはパブリック)
+
+variables: # 環境変数を定義する
+  APP_NAME: api2 # Service毎にHTMLの表示を変えるための環境変数
